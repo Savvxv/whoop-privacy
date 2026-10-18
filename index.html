@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacy Policy · Health Hub WHOOP integration</title>
+    <meta name="description" content="How the personal Health Hub WHOOP integration accesses, stores, uses and deletes WHOOP data." />
+    <meta name="robots" content="noindex" />
+    <style>
+      :root {
+        --bg: #ffffff;
+        --text: #16181d;
+        --muted: #5b616e;
+        --rule: #e4e6eb;
+        --accent: #2457d6;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0b0c0f;
+          --text: #eceef2;
+          --muted: #9aa1ae;
+          --rule: #23262d;
+          --accent: #7aa2ff;
+        }
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font: 16px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      }
+      main {
+        max-width: 42rem;
+        margin: 0 auto;
+        padding: 56px 20px 72px;
+      }
+      h1 {
+        margin: 0 0 6px;
+        font-size: 2rem;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+      }
+      .meta {
+        margin: 0 0 32px;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+      h2 {
+        margin: 36px 0 8px;
+        padding-top: 20px;
+        border-top: 1px solid var(--rule);
+        font-size: 1.15rem;
+      }
+      ul {
+        padding-left: 1.25rem;
+      }
+      li + li {
+        margin-top: 4px;
+      }
+      code {
+        font: 0.88em ui-monospace, "Cascadia Code", Consolas, monospace;
+      }
+      a {
+        color: var(--accent);
+      }
+      footer {
+        margin-top: 40px;
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Privacy Policy</h1>
+      <p class="meta">Health Hub · personal WHOOP integration · Effective 18 October 2026</p>
+
+      <p>
+        Health Hub is a personal, self-hosted app that runs on one computer and has one user: the person who built it,
+        Mustafa Tariq. Its WHOOP integration lets that person see their own WHOOP data alongside the rest of their health
+        records. It is not offered to anyone else, and nobody else can create an account or sign in.
+      </p>
+
+      <h2>What WHOOP data it can access</h2>
+      <p>When the WHOOP account is connected, WHOOP grants the app permission (scopes) to read:</p>
+      <ul>
+        <li>Profile: first and last name (<code>read:profile</code>)</li>
+        <li>Body measurements (<code>read:body_measurement</code>)</li>
+        <li>Physiological cycles (<code>read:cycles</code>)</li>
+        <li>Recovery (<code>read:recovery</code>)</li>
+        <li>Sleep (<code>read:sleep</code>)</li>
+        <li>Workouts (<code>read:workout</code>)</li>
+        <li>Offline access (<code>offline</code>), so access can be renewed without signing in to WHOOP again</li>
+      </ul>
+      <p>
+        At present the app actually retrieves only the basic profile name, and only when its owner chooses
+        <em>Test the connection</em>. The name is shown once on screen and is not saved. The app never writes or changes
+        anything in the WHOOP account. If features that import sleep, recovery, cycle, workout or body data are added,
+        this policy will be updated before they are used.
+      </p>
+
+      <h2>Where it is stored</h2>
+      <ul>
+        <li>
+          Everything stays on the owner's own computer. The app has no cloud database or hosted server, and by default it
+          only answers requests made on that computer, from its owner's signed-in account.
+        </li>
+        <li>
+          The access token and refresh token WHOOP issues are kept in a private file in the app's data folder on that
+          computer. They are never sent to the web browser or to any other service.
+        </li>
+        <li>The app's WHOOP client secret is kept in a local configuration file and used only by the app's server.</li>
+        <li>Requests to WHOOP are made directly from that computer to WHOOP's API over HTTPS.</li>
+        <li>
+          The token file is protected by access to the computer itself; it is not separately encrypted. Backup copies the
+          owner makes of the app's data folder may include it.
+        </li>
+        <li>The app keeps no logs of requests or tokens.</li>
+      </ul>
+
+      <h2>How it is used</h2>
+      <ul>
+        <li>Only to show the owner's own WHOOP data to the owner, inside Health Hub.</li>
+        <li>Not sold, shared, rented or disclosed to anyone.</li>
+        <li>Not used for advertising, analytics, profiling or training any model.</li>
+        <li>No third-party services, trackers or cookies receive WHOOP data.</li>
+      </ul>
+
+      <h2>How long it is kept</h2>
+      <p>
+        An access token is valid for about an hour and is renewed automatically while the account stays connected.
+        Tokens are kept until the WHOOP account is disconnected, or until WHOOP stops accepting them, at which point the
+        app deletes them.
+      </p>
+
+      <h2>How to disconnect and delete it</h2>
+      <ul>
+        <li>
+          In Health Hub, open <em>Health → Settings → WHOOP</em> and choose <em>Disconnect</em>. The app asks WHOOP to
+          revoke its access (WHOOP's revoke endpoint) and deletes the stored tokens from the computer.
+        </li>
+        <li>
+          To remove everything, also delete the app's WHOOP configuration (client ID and secret) and any backup copies of
+          its data folder.
+        </li>
+        <li>
+          Data held by WHOOP itself is governed by
+          <a href="https://www.whoop.com/privacy/full-privacy-policy/" rel="noopener">WHOOP's own privacy policy</a>.
+        </li>
+      </ul>
+
+      <h2>Changes</h2>
+      <p>If the integration changes what it accesses or how it handles data, this page will be updated and its date changed.</p>
+
+      <h2>Contact</h2>
+      <p>Questions about this policy: 007mrsavageduckyeet@gmail.com.</p>
+
+      <footer>Health Hub is an independent personal project and is not affiliated with or endorsed by WHOOP, Inc.</footer>
+    </main>
+  </body>
+</html>
