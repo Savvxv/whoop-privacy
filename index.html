@@ -76,7 +76,7 @@
   <body>
     <main>
       <h1>Privacy Policy</h1>
-      <p class="meta">Health Hub · personal WHOOP integration · Effective 18 October 2026</p>
+      <p class="meta">Health Hub · personal WHOOP integration · Effective 19 October 2026</p>
 
       <p>
         Health Hub is a personal, self-hosted app that runs on one computer and has one user: the person who built it,
@@ -95,11 +95,35 @@
         <li>Workouts (<code>read:workout</code>)</li>
         <li>Offline access (<code>offline</code>), so access can be renewed without signing in to WHOOP again</li>
       </ul>
+      <p>From these, the app imports into its Health section:</p>
+      <ul>
+        <li>
+          Sleep: when each night started and ended; the time asleep; time in bed; minutes awake and in light, deep (slow
+          wave) and REM sleep; sleep performance, efficiency and consistency; respiratory rate; the number of disturbances;
+          WHOOP's sleep need for the night (baseline, sleep debt, recent strain and recent nap); and whether WHOOP is still
+          scoring the night or could not score it. Naps are not imported.
+        </li>
+        <li>
+          Recovery: the recovery score, resting heart rate, heart rate variability (HRV), blood oxygen (SpO2), skin
+          temperature, whether WHOOP is still calibrating to the wearer, and whether the score is still pending
+        </li>
+        <li>
+          Cycles: the day's strain, energy expended (as calories), average and maximum heart rate, the step count when WHOOP
+          provides one, and whether the day's strain is still pending
+        </li>
+        <li>
+          Workouts: the sport, start time, duration, distance, strain, average and maximum heart rate, energy expended (as
+          calories), minutes in each heart-rate zone, and whether WHOOP is still scoring it
+        </li>
+        <li>Body measurement: the weight in the WHOOP profile</li>
+      </ul>
       <p>
-        At present the app actually retrieves only the basic profile name, and only when its owner chooses
-        <em>Test the connection</em>. The name is shown once on screen and is not saved. The app never writes or changes
-        anything in the WHOOP account. If features that import sleep, recovery, cycle, workout or body data are added,
-        this policy will be updated before they are used.
+        When first connected it reads the last year of this data; once a year has been read, each sync reads the last 14
+        days (so scores WHOOP finishes later are picked up). It syncs when Health is opened, every half hour while it stays
+        open, and when its owner chooses <em>Refresh</em> or <em>Sync now</em>. Readings WHOOP has not scored yet are kept
+        as pending, never as zero, and are replaced when WHOOP finishes. The profile name is read only for <em>Test the
+        connection</em>, shown once and not saved. The height in the WHOOP profile is read with the weight but not stored.
+        The app never writes or changes anything in the WHOOP account.
       </p>
 
       <h2>Where it is stored</h2>
@@ -112,8 +136,29 @@
           The access token and refresh token WHOOP issues are kept in a private file in the app's data folder on that
           computer. They are never sent to the web browser or to any other service.
         </li>
+        <li>
+          Imported WHOOP data is kept with the rest of the owner's health records, in Health Hub's data file on that
+          computer, each record marked as coming from WHOOP. It is included in that data's automatic local backups and in
+          the copy the owner can download from Health settings.
+        </li>
+        <li>
+          A small sync record is kept next to the tokens: when the last sync succeeded, when one last failed and the error
+          message it gave, and how far back the WHOOP history has been read. It holds no health readings. It is deleted on
+          disconnect.
+        </li>
+        <li>
+          The owner's choices for how Health shows WHOOP data (which metric is on the chart, the time range and comparison
+          shown) are saved with the owner's Health settings on that computer.
+        </li>
         <li>The app's WHOOP client secret is kept in a local configuration file and used only by the app's server.</li>
         <li>Requests to WHOOP are made directly from that computer to WHOOP's API over HTTPS.</li>
+        <li>
+          After access is approved, WHOOP sends the browser to a small page on this website (<code>callback.html</code>),
+          which immediately passes WHOOP's one-time approval code back to Health Hub on the owner's computer. The page runs
+          only in the browser and stores nothing. Because the code is part of that page's address, this website's host
+          (GitHub Pages) receives it with the page request; the code expires quickly, works only once, and is useless
+          without the app's client secret, which never leaves the owner's computer.
+        </li>
         <li>
           The token file is protected by access to the computer itself; it is not separately encrypted. Backup copies the
           owner makes of the app's data folder may include it.
@@ -133,18 +178,24 @@
       <p>
         An access token is valid for about an hour and is renewed automatically while the account stays connected.
         Tokens are kept until the WHOOP account is disconnected, or until WHOOP stops accepting them, at which point the
-        app deletes them.
+        app deletes them. Imported records stay in Health until the owner removes them (see below); disconnecting stops
+        new imports.
       </p>
 
       <h2>How to disconnect and delete it</h2>
       <ul>
         <li>
           In Health Hub, open <em>Health → Settings → WHOOP</em> and choose <em>Disconnect</em>. The app asks WHOOP to
-          revoke its access (WHOOP's revoke endpoint) and deletes the stored tokens from the computer.
+          revoke its access (WHOOP's revoke endpoint) and deletes the stored tokens and the sync record from the computer.
+        </li>
+        <li>
+          Then choose <em>Remove imported WHOOP data</em> on the same page to delete every record WHOOP brought into Health,
+          leaving what the owner logged by hand. Single records can also be deleted from Health's pages at any time, and a
+          deleted record is not imported again.
         </li>
         <li>
           To remove everything, also delete the app's WHOOP configuration (client ID and secret) and any backup copies of
-          its data folder.
+          its data folder, including Health's automatic backups made while WHOOP data was present.
         </li>
         <li>
           Data held by WHOOP itself is governed by
