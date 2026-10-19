@@ -118,9 +118,11 @@
         <li>Body measurement: the weight in the WHOOP profile</li>
       </ul>
       <p>
-        When first connected it reads the last year of this data; once a year has been read, each sync reads the last 14
-        days (so scores WHOOP finishes later are picked up). It syncs when Health is opened, every half hour while it stays
-        open, and when its owner chooses <em>Refresh</em> or <em>Sync now</em>. Readings WHOOP has not scored yet are kept
+        When first connected it reads the last year of this data; after that, each sync reads everything since the last
+        successful one (at least the last 14 days, so scores WHOOP finishes later are picked up). The app's server syncs
+        every three hours while it is running, and soon after it starts if a sync is due; it also syncs when Health is
+        opened and the last successful sync was over an hour ago, and when its owner chooses <em>Refresh</em> or
+        <em>Sync now</em>. The imported data is saved straight into Health's data file on the owner's computer. Readings WHOOP has not scored yet are kept
         as pending, never as zero, and are replaced when WHOOP finishes. The profile name is read only for <em>Test the
         connection</em>, shown once and not saved. The height in the WHOOP profile is read with the weight but not stored.
         The app never writes or changes anything in the WHOOP account.
@@ -143,7 +145,8 @@
         </li>
         <li>
           A small sync record is kept next to the tokens: when the last sync succeeded, when one last failed and the error
-          message it gave, and how far back the WHOOP history has been read. It holds no health readings. It is deleted on
+          message it gave, how far back the WHOOP history has been read, and how many records the last sync added and
+          updated (and whether it was automatic). It holds no health readings. It is deleted on
           disconnect.
         </li>
         <li>
